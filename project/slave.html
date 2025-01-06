@@ -1,73 +1,357 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHADOW SLAVE - บทแรก</title>
+    <title>Novel Details</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            font-size: 28px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
             color: #333;
         }
-        p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.6;
-        }
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background-color: #333;
             padding: 10px 20px;
+            color: white;
+        }
+        .navbar .logo {
+            margin-right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar .menu {
+            display: flex;
+        }
+        .navbar button {
             background-color: #333;
             color: white;
-            text-decoration: none;
-            border-radius: 4px;
+            border: 1px solid transparent;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .back-button:hover {
+        .navbar button:hover {
             background-color: black;
+            color: white;
+        }
+        .navbar button.active {
+            background-color: black;
+            color: white;
+        }
+        .navbar input[type="search"] {
+            padding: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .navbar .search-bar {
+            margin-left: auto;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .header {
+            background: #333;
+            color: #fff;
+            padding: 1px 0;
+            text-align: center;
+        }
+        .details {
+            display: flex;
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .details img {
+            max-width: 200px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .details .info {
+            flex: 1;
+        }
+        .info h2 {
+            margin: 0;
+        }
+        .info .rating {
+            color: #f39c12;
+            margin: 10px 0;
+        }
+        .section {
+            background: #fff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h3 {
+            margin-top: 0;
+        }
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .chapter-list li {
+            padding: 15px;
+            margin: 5px 0;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .chapter-list li:hover {
+            background-color: #2b2b2b;
+            transform: translateY(-5px);
+        }
+        .chapter-list li a {
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+            font-weight: bold;
+        }
+        .chapter-list li a:hover {
+            color: white;
+        }
+        .chapter-title {
+            font-size: 16px;
+            color: #333;
+        }
+        .chapter-date {
+            font-size: 14px;
+            color: #888;
+        }
+        .chapter-list li:hover .chapter-title {
+            color: white;
+        }
+        .chapter-list li:hover .chapter-date {
+            color: #e0e0e0;
+        }
+        .comment-section textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #fff;
+            background: #333;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #555;
+        }
+        .comment-form textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .comment-form button {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .comment-form button:hover {
+            background: #555;
+        }
+        .comments {
+            margin-top: 20px;
+        }
+        .comment {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .comment:last-child {
+            border-bottom: none;
+        }
+        .comment p {
+            margin: 5px 0;
+        }
+        .comment .author {
+            font-weight: bold;
+        }
+        .comment .date {
+            font-size: 12px;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <h1>SHADOW SLAVE - บทแรก</h1>
-        <p>ตัวเอกของเรื่องคือ ซันนี่ เด็กหนุ่มผู้ได้รับพลังพิเศษจากโลกที่ไม่คุ้นเคย...</p>
-        <p>เขาต้องเผชิญหน้ากับการผจญภัยและความท้าทายต่างๆ ในโลกที่เต็มไปด้วยมอนสเตอร์และอำนาจมืด<br><br>บทที่ 1: การเริ่มต้นใหม่
 
-            ซันนี่รู้สึกเหมือนตัวเองกำลังตกลงไปในหลุมมืดลึก ๆ ทุกสิ่งรอบตัวมันพร่าไปหมด ความรู้สึกเวียนหัวที่คุ้นเคยทำให้เขาต้องยกมือขึ้นมาจับขมับ ทุกอย่างมืดสนิท แต่เสียงที่ดังอยู่รอบตัวกลับแสดงถึงบางสิ่งที่ไม่สามารถมองเห็นได้
-            
-            เมื่อแสงเริ่มปรากฏออกมาเป็นแสงสะท้อนจากสิ่งที่ไม่คุ้นเคย เขารู้สึกว่าเขากำลังอยู่ในสถานที่ที่ไม่เคยพบเห็นมาก่อน ร่างกายของเขาไม่เหมือนเดิม เขารู้สึกแปลกไป สภาพแวดล้อมรอบตัวเต็มไปด้วยความมืด แต่บางอย่างยังคงสะท้อนแสงให้เห็นเค้าโครงของโลกใหม่ที่เขาอยู่
-            
-            เสียงฝีเท้าของใครบางคนดังก้องไปทั่วในความเงียบสงัด ซันนี่พยายามยืดตัวขึ้น แต่ทุกอย่างที่เขาทำกลับยิ่งทำให้เขารู้สึกเหมือนกับว่าเขากำลังถูกควบคุมจากบางสิ่งภายในตัวเขาเอง เขาหมุนไปหาต้นเสียงและเห็นเงาที่ไม่คุ้นเคยเดินเข้ามาใกล้
-            
-            "ยินดีต้อนรับสู่อาณาจักรแห่งความมืด" เสียงที่มีพลังและลึกซึ้งทำให้ยุนรู้สึกถึงพลังบางอย่างที่ไม่สามารถหลีกหนีได้ มันไม่ได้เป็นแค่เสียงของคนธรรมดา แต่มันคือคำสั่งจากสิ่งที่ไม่ใช่มนุษย์
-            
-            ซันนี่หรี่ตาลงและมองไปที่เงานั้นที่ค่อยๆ ชัดเจนขึ้นในแสงที่พยายามฝ่าฟันความมืด ทันใดนั้น เขาก็รู้สึกถึงการเคลื่อนไหวภายในร่างกายของตัวเอง พลังบางอย่างที่เขาไม่เคยรู้จักเริ่มแผ่ซ่านไปทั่วร่างกาย
-            
-            "นายได้รับพลังจากเงาของตัวเอง" เสียงนั้นพูดอีกครั้ง ซันนี่ไม่สามารถปฏิเสธได้ เขารู้สึกถึงพลังที่ไม่มีที่มาที่ไปแผ่ออกมา มันทำให้เขารู้สึกเหมือนกับว่ามันเป็นส่วนหนึ่งของเขาเอง แต่เขาก็ยังไม่เข้าใจว่าทำไมเขาถึงต้องมาอยู่ในสถานที่แห่งนี้
-            
-            ในความมืดนั้น ความสงบเงียบกลับยิ่งทำให้ยุนรู้สึกถึงความเครียดและความกดดันจากสิ่งที่ไม่สามารถมองเห็นได้ แต่มันไม่ใช่แค่ความมืดที่ทำให้เขากลัว แต่เป็นสิ่งที่เขาไม่เข้าใจในตัวเอง—พลังที่เขาได้รับ
-            
-            "มันไม่ใช่แค่พลังที่จะทำให้คุณแข็งแกร่ง แต่เป็นพันธะที่จะควบคุมชีวิตของคุณ" เสียงนั้นดังขึ้นอีกครั้ง พร้อมกับเสียงหัวเราะที่ดังและลึกลับ
-            
-            ซันนี่ยังคงยืนอยู่ในที่นั้น ท่ามกลางความมืดที่เริ่มชัดเจนขึ้นเรื่อยๆ เขารู้สึกถึงความเปลี่ยนแปลงในตัวเอง และเขารู้ว่าเขาต้องเผชิญหน้ากับสิ่งที่ไม่เคยคาดคิดมาก่อน นี่คือจุดเริ่มต้นของการผจญภัยครั้งใหม่ในโลกแห่งเงามืดที่เขาจะต้องเรียนรู้และต่อสู้เพื่อเอาชีวิตรอด
-            
-            </p>
-
-        <a href="read.html" class="back-button">กลับไปหน้าอ่าน</a>
+    <div class="navbar">
+        <div class="logo">READ WEB</div>
+        <div class="menu">
+            <button onclick="location.href='index.html'">หน้าแรก</button>
+            <button class="active" onclick="location.href='read.html'">อ่าน</button>
+            <button onclick="location.href='contact.html'">ติดต่อเรา</button>
+        </div>
+        <div class="search-bar">
+            <input type="search" placeholder="Search">
+            <button>ค้นหา</button>
+        </div>
     </div>
+
+    <div class="container">
+        <div class="details">
+            <img src="img/slave.jpg" alt="Novel Cover">
+            <div class="info">
+                <h2>Shadow Slave</h2>
+                <p class="rating">Rating: ⭐ 5/5</p>
+                <p>Author: Updating</p>
+                <p>Status: Ongoing</p>
+                <a href="" class="btn">Read First</a>
+                <a href="" class="btn">Read Last</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Summary</h3>
+            <p>ซันนี่เติบโตมากับความยากจนและไม่เคยคาดหวังอะไรดีๆ จากชีวิตเลย อย่างไรก็ตาม แม้ว่าเขาไม่คาดคิดมาก่อนว่าจะถูกเลือกโดยคาถา Nightmare และกลายเป็นหนึ่งในกลุ่ม Awakened ซึ่งเป็นกลุ่มคนชั้นยอดที่มีพลังเหนือธรรมชาติ เมื่อถูกส่งเข้าสู่โลกเวทย์มนตร์ที่พังทลาย เขาพบว่าตัวเองต้องเผชิญหน้ากับสัตว์ประหลาดที่น่ากลัวและอเวคตัวอื่นๆ ในการต่อสู้เอาชีวิตรอดที่อันตราย ที่แย่ไปกว่านั้น พลังศักดิ์สิทธิ์ที่เขาได้รับนั้นมีผลข้างเคียงเล็กน้อย แต่อาจถึงแก่ชีวิตได้...
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Latest Releases</h3>
+            <ul class="chapter-list">
+                <li>
+                    <a href="#">
+                        <span class="chapter-title">ตอนที่ : </span>
+                        <span class="chapter-date">March 1, 2022</span>
+                    </a>
+                </li>
+                <!-- Add more chapters here -->
+            </ul>
+        </div>
+
+<!-- Comment Section -->
+<div class="section comment-section">
+    <h3>Leave a Reply</h3>
+    <input type="text" id="authorName" placeholder="Your name" class="comment-name">
+    <textarea rows="5" id="commentInput" placeholder="Your comment here..."></textarea>
+    <button class="btn" onclick="addComment()">Submit</button>
+</div>
+
+
+<!-- Display Comments -->
+<div class="comments" id="comments"></div>
+
+
+<script>
+    // Function to load comments from localStorage
+function loadComments() {
+  const commentsDiv = document.getElementById("comments");
+  const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+
+  savedComments.forEach(comment => {
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment");
+
+      // Add author name
+      const author = document.createElement("p");
+      author.classList.add("author");
+      author.innerText = comment.author;
+      commentDiv.appendChild(author);
+
+      // Add date
+      const date = document.createElement("p");
+      date.classList.add("date");
+      date.innerText = comment.date;
+      commentDiv.appendChild(date);
+
+      // Add comment text
+      const commentText = document.createElement("p");
+      commentText.innerText = comment.text;
+      commentDiv.appendChild(commentText);
+
+      // Append new comment to the comments section
+      commentsDiv.prepend(commentDiv);
+  });
+}
+
+// Function to add a new comment dynamically
+function addComment() {
+  const authorName = document.getElementById("authorName").value.trim();
+  const commentInput = document.getElementById("commentInput").value.trim();
+  const commentsDiv = document.getElementById("comments");
+
+  // Check if name and comment are provided
+  if (authorName && commentInput) {
+      const newComment = {
+          author: authorName,  // Use the name provided by the user
+          date: new Date().toLocaleString(),
+          text: commentInput
+      };
+
+      // Save new comment in localStorage
+      const savedComments = JSON.parse(localStorage.getItem("comments")) || [];
+      savedComments.unshift(newComment); // Add new comment to the top
+      localStorage.setItem("comments", JSON.stringify(savedComments));
+
+      // Create comment element
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment");
+
+      // Add author name
+      const author = document.createElement("p");
+      author.classList.add("author");
+      author.innerText = newComment.author;
+      commentDiv.appendChild(author);
+
+      // Add date
+      const date = document.createElement("p");
+      date.classList.add("date");
+      date.innerText = newComment.date;
+      commentDiv.appendChild(date);
+
+      // Add comment text
+      const commentText = document.createElement("p");
+      commentText.innerText = newComment.text;
+      commentDiv.appendChild(commentText);
+
+      // Append new comment to the comments section
+      commentsDiv.prepend(commentDiv);
+
+      // Clear input fields
+      document.getElementById("authorName").value = "";
+      document.getElementById("commentInput").value = "";
+  } else {
+      alert("Please enter both your name and a comment.");
+  }
+}
+
+// Load comments when the page is loaded
+window.onload = loadComments;
+
+  </script>
 </body>
 </html>
